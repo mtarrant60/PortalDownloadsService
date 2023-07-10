@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetClientUNCFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="legalCaseId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientUNCFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientUNCFolderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="legalCaseId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilesResult" type="tns:ArrayOfPortalDoc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPortalDoc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PortalDoc" nillable="true" type="tns:PortalDoc" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PortalDoc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="File" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientFolder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileFullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Created" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateDocumentFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="legalCaseId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDocumentFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateDocumentFolderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFromSharePoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientFolder" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFromSharePointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadFromSharePointResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadFileResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetClientUNCFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientUNCFolder" />
+  </wsdl:message>
+  <wsdl:message name="GetClientUNCFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientUNCFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDocumentFolder" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDocumentFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFromSharePointSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadFromSharePoint" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFromSharePointSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadFromSharePointResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DownloadSoap">
+    <wsdl:operation name="GetClientUNCFolder">
+      <wsdl:input message="tns:GetClientUNCFolderSoapIn" />
+      <wsdl:output message="tns:GetClientUNCFolderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFiles">
+      <wsdl:input message="tns:GetFilesSoapIn" />
+      <wsdl:output message="tns:GetFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocumentFolder">
+      <wsdl:input message="tns:CreateDocumentFolderSoapIn" />
+      <wsdl:output message="tns:CreateDocumentFolderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFromSharePoint">
+      <wsdl:input message="tns:DownloadFromSharePointSoapIn" />
+      <wsdl:output message="tns:DownloadFromSharePointSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:input message="tns:DownloadFileSoapIn" />
+      <wsdl:output message="tns:DownloadFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DownloadSoap" type="tns:DownloadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClientUNCFolder">
+      <soap:operation soapAction="http://tempuri.org/GetClientUNCFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFiles">
+      <soap:operation soapAction="http://tempuri.org/GetFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocumentFolder">
+      <soap:operation soapAction="http://tempuri.org/CreateDocumentFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFromSharePoint">
+      <soap:operation soapAction="http://tempuri.org/DownloadFromSharePoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap:operation soapAction="http://tempuri.org/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DownloadSoap12" type="tns:DownloadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClientUNCFolder">
+      <soap12:operation soapAction="http://tempuri.org/GetClientUNCFolder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFiles">
+      <soap12:operation soapAction="http://tempuri.org/GetFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocumentFolder">
+      <soap12:operation soapAction="http://tempuri.org/CreateDocumentFolder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFromSharePoint">
+      <soap12:operation soapAction="http://tempuri.org/DownloadFromSharePoint" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap12:operation soapAction="http://tempuri.org/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Download">
+    <wsdl:port name="DownloadSoap" binding="tns:DownloadSoap">
+      <soap:address location="https://iservices.bbabsence.com/PortalDownloadsService/download.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DownloadSoap12" binding="tns:DownloadSoap12">
+      <soap12:address location="https://iservices.bbabsence.com/PortalDownloadsService/download.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
